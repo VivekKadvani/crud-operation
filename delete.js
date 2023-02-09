@@ -36,7 +36,7 @@ create.addEventListener("click", () => {
 catch(e)
 {console.log(e)}
 const l_data=JSON.parse(localStorage.getItem("product"))
-console.log(l_data)
+// console.log(l_data[1])
 for (let i = 1; i <= l_data.length; i++) {
 
     document.getElementById("test").innerHTML+=`<div id="p_card">
@@ -47,6 +47,21 @@ for (let i = 1; i <= l_data.length; i++) {
     </div>
     <div id="c_p_desp">`+l_data[i-1].desc+`
     </div>
+    <a class="btn btn-primary" id="btn_delete" href="#?id=`+l_data[i-1].p_id+`">delete</a>
 </div>`
 
 }
+
+window.addEventListener('popstate', function (event) {
+	// The URL changed...
+    let id_url=this.document.URL
+    let id_val=parseInt(id_url.substring(id_url.length-1,id_url.length))
+    // console.log(id_url+" : "+id_url.substring(id_url.length-1,id_url.length))
+    console.log(l_data)
+    l_data.splice(id_val-1,1)
+    console.log(l_data)
+});
+// const btn_del= document.getElementById("btn_del")
+// btn_del.addEventListener("click",()=>{
+//     console.log("clicked delete")
+// })

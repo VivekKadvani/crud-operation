@@ -9,6 +9,7 @@
     padding-left: 15%;
     padding-right: 15%;
     padding-top: 5%;
+    margin-bottom: 7%;
 }
 header{
     position: fixed;
@@ -127,4 +128,54 @@ color: black;
     color: white;
     padding-top: 4rem;
     font-size: 1.5rem;
+}
+
+/* product cars style */
+#p_card{
+    height: 30rem;
+    width: 25rem;
+    border-radius: 30px;
+    background-color: coral;
+    padding-bottom:3rem;
+}
+
+#test{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* justify-content: space-between; */
+    grid-gap: 3rem;
+}
+#sec_first_pcard{
+    background-color: antiquewhite;
+    border-radius: 30px;
+    padding-top: 5%;
+}
+#c_p_n_p{
+    display: flex;
+}
+#c_p_image{
+    height:300px;
+    width: 300px;
+    background-color: chartreuse;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}    
+#c_p_image_data{
+    height:300px;
+    width: 300px;
+    border-radius: 30px;
+}
+#c_p_n_p{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left:3rem;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+}
+#c_p_desp{
+    margin-left:3rem;
+    margin-right: 3rem;
 }
