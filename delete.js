@@ -59,6 +59,7 @@ window.addEventListener('popstate', function (event) {
     // console.log(id_url+" : "+id_url.substring(id_url.length-1,id_url.length))
     console.log(l_data)
     l_data.splice(id_val-1,1)
+    localStorage.setItem("product",JSON.stringify(l_data))
     console.log(l_data)
 });
 // const btn_del= document.getElementById("btn_del")
