@@ -48,7 +48,6 @@ for (let i = 0; i < l_data.length; i++) {
     <div id="c_p_desp">`+ l_data[i].desc + `
     </div>
     <a class="btn btn-primary" id="btn_delete" href="#?id=`+ l_data[i].p_id + `">delete</a>
-    
 </div>`
 
 }
