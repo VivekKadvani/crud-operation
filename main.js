@@ -1,4 +1,5 @@
 const create = document.getElementById("btn_create")
+const update = document.getElementById("btn_Update")
 const p_name = document.getElementById("p_name")
 const prise = document.getElementById("p_prise")
 const description = document.getElementById("p_desc")
@@ -7,6 +8,10 @@ if (localStorage.getItem("id") == undefined)
     localStorage.setItem("id", 0)
 try{
 create.addEventListener("click", () => {
+  
+
+    this.location.reload(); 
+
     let t_id = parseInt(localStorage.getItem("id")) + 1
     const product = {
         p_id: t_id,
@@ -31,10 +36,16 @@ create.addEventListener("click", () => {
     var n_str=str.substring(0,str.length-1)
     localStorage.setItem("product",start+n_str+end + JSON.stringify(product)+brk)
     localStorage.setItem("id", t_id)
+    
 })
+
 }
 catch(e)
 {console.log(e)}
+finally{
+    
+}
+
 const l_data=JSON.parse(localStorage.getItem("product"))
 console.log(l_data)
 for (let i = 1; i <= l_data.length; i++) {
