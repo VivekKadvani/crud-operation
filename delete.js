@@ -9,62 +9,92 @@ if (localStorage.getItem("id") == undefined)
     localStorage.setItem("id", 0)
 
 
-    
-    create.addEventListener("click", () => {
-            if (p_name.value == null && p_name.value=="") {
-                alert("enter name")
-                return 1;
-            }
 
-            else if (prise.value == null) {
-                alert("enter prise")
-                return 1;
-            }
+create.addEventListener("click", () => {
 
-            else if (description.value == null) {
-                alert("enter Image Url")
-                return 1;
-            }
 
-            else if (p_image.value == null) {
-                alert("enter descrription")
-                return 1;
-            }
-            else 
-                create_product()
-        
+    regex_name = /[0-9]/g
+    const f1 = regex_name.test(p_name.value)
 
-    })
-    function create_product() {
-        this.location.reload();
-        let t_id = parseInt(localStorage.getItem("id")) + 1
+    regex_prise = /[a-zA-Z]|\W|_/g
+    const f2 = regex_prise.test(prise.value)
 
-        const product = {
-            p_id: t_id,
-            p_name: p_name.value,
-            prise: prise.value,
-            desc: description.value,
-            image: p_image.value
-        }
-        var start = ""
-        var end = ""
-        var brk = "]"
-        var str = localStorage.getItem("product")
-        if (str == null) {
-            str = ""
-            start = "["
-        }
-        else {
-            start = ""
-            end = ","
-        }
+    regex_url = /^(http|https):\/\/[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}(([0-9]{1,5})?\/.*)?$/g
+    const f3 = regex_url.test(p_image.value)
 
-        var n_str = str.substring(0, str.length - 1)
-        localStorage.setItem("product", start + n_str + end + JSON.stringify(product) + brk)
-        localStorage.setItem("id", t_id)
+
+    //check foe empty entry
+    if (p_name.value == "") {
+        console.log(f1)
+        alert("enter name")
+    }
+    //chek for only alphabets are appear in name 
+    else if (f1 != false) {
+        alert("enter valid name")
+        return 1;
     }
 
-     
+    //check foe empty entry
+    else if (prise.value == "") {
+        alert("enter prise")
+        return 1;
+    }
+    //check for only numbers
+    else if (f2 != false) {
+        alert("please enter only numbers")
+        return 1;
+    }
+    //check for empty entry
+    else if (p_image.value == "") {
+        alert("enter Image Url")
+        return 1;
+    }
+    //check for valid url
+    else if (f3 != true) {
+        alert("please enter valid url")
+        return 1;
+    }
+    //check for empty entry
+    else if (description.value == "") {
+        alert("enter descrription")
+        return 1;
+    }
+    else
+        create_product()
+
+
+})
+function create_product() {
+    
+    let t_id = parseInt(localStorage.getItem("id")) + 1
+
+    const product = {
+        p_id: t_id,
+        p_name: p_name.value,
+        prise: prise.value,
+        desc: description.value,
+        image: p_image.value
+    }
+    var start = ""
+    var end = ""
+    var brk = "]"
+    var str = localStorage.getItem("product")
+    if (str == null) {
+        str = ""
+        start = "["
+    }
+    else {
+        start = ""
+        end = ","
+    }
+
+    var n_str = str.substring(0, str.length - 1)
+    localStorage.setItem("product", start + n_str + end + JSON.stringify(product) + brk)
+    localStorage.setItem("id", t_id)
+    this.location.reload();
+}
+
+
 const l_data = JSON.parse(localStorage.getItem("product"))
 
 for (let i = 0; i < l_data.length; i++) {
@@ -76,8 +106,8 @@ for (let i = 0; i < l_data.length; i++) {
     </div>
     <div id="c_p_desp">`+ l_data[i].desc + `
     </div>
-    <a class="btn btn-danger" id="btn_delete" href="#?action=delete&id=`+ l_data[i].p_id + `">delete</a>
-    <a class="btn btn-primary" id="btn_update" href="#?action=update&id=`+ l_data[i].p_id + `">Update</a>
+    <a class="btn btn-danger" id="btn_delete" href="#?action=delete&id=`+ l_data[i].p_id + `">Delete</a>
+    <a class="btn btn-dark" id="btn_update" href="#?action=update&id=`+ l_data[i].p_id + `">Update</a>
 </div>`
 }
 

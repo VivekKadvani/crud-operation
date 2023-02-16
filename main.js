@@ -16,6 +16,7 @@ const nav_home = document.getElementById("nav_home")
 const nav_about = document.getElementById("nav_about")
 const nav_skill = document.getElementById("nav_skill")
 const nav_career = document.getElementById("nav_career")
+const search = document.getElementById("search")
 
 
 if (localStorage.getItem("id") == undefined)
@@ -93,7 +94,7 @@ for (let i = 1; i <= l_data.length; i++) {
     </div>
     <div id="c_p_desp">`+ l_data[i - 1].desc + `
     </div>
-</div>`
+    </div>`
 
 }
 
@@ -154,3 +155,53 @@ btn_sort_price_d.addEventListener("click", () => {
     localStorage.setItem("product", JSON.stringify(l_data))
     location.reload();
 })
+
+function search_item() {
+    if (search.value === "") {
+        console.log("main normal")
+        document.getElementById("test").innerHTML=""
+        for (let i = 1; i <= l_data.length; i++) {
+            document.getElementById("test").innerHTML += `<div id="p_card">
+    <div id="c_p_image"><img id="c_p_image_data" src="`+ l_data[i - 1].image + `"></div>
+    <div id="c_p_n_p">
+        <div id="c_n">`+ l_data[i - 1].p_name + `</div>
+        <div id="c_p">`+ l_data[i - 1].prise + `</div>
+    </div>
+    <div id="c_p_desp">`+ l_data[i - 1].desc + `
+    </div>
+</div>`
+
+        }
+    }
+    else {
+        setTimeout(() => {
+            const filteredData = l_data.filter(item => item.p_name === search.value);
+            console.log(filteredData)
+            let temp = filteredData[0].p_id
+
+            for (let i = 0; i < l_data.length; i++) {
+                if (l_data[i].p_id == temp) {
+                    document.getElementById("test").innerHTML = ""
+                    for (let i = 0; i <= filteredData.length; i++) {
+                        document.getElementById("test").innerHTML += `<div id="p_card">
+                    <div id="c_p_image"><img id="c_p_image_data" src="`+ filteredData[i].image + `"></div>
+                    <div id="c_p_n_p">
+                        <div id="c_n">`+ filteredData[i].p_name + `</div>
+                        <div id="c_p">`+ filteredData[i].prise + `</div>
+                    </div>
+                    <div id="c_p_desp">`+ filteredData[i].desc + `
+                    </div>
+                </div>`
+
+                    }
+                    console.log(l_data[i])
+                    // document.getElementById("p_card").style.display="block"
+                }
+                else {
+                    console.log("normal")
+                    // document.getElementById("p_card").style.display="none"
+                }
+            }
+        }, 1000);
+    }
+}

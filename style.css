@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 .section{
     /* height: 700px; */
-    padding-top: 4rem;
+    padding-top: 10rem;
 }
 #sec_first{
     background-color: antiquewhite;
@@ -9,13 +9,22 @@
     padding-left: 15%;
     padding-right: 15%;
     padding-top: 5%;
-    margin-bottom: 7%;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+#sec_first_pcard{
+    
+    background-color: antiquewhite;
+    border-radius: 30px;
+    padding-top: 1%;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 header{
     position: fixed;
     z-index: 100;
     background-color: white;
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     padding-top: 1rem;
 }
@@ -27,7 +36,7 @@ header{
 #nav_bar{
     margin-right: 10%;
 }
-#nav_home ,#nav_about ,#nav_career,#nav_skill{
+#nav_home ,#nav_about ,#nav_career,#nav_skill , #nav_home{
     border-radius: 15px;
 }
 a:hover a{background-color: red;}
@@ -132,7 +141,7 @@ color: black;
 
 /* product cars style */
 #p_card{
-    height: 30rem;
+    height: 32rem;
     width: 25rem;
     border-radius: 30px;
     background-color: coral;
@@ -145,11 +154,7 @@ color: black;
     /* justify-content: space-between; */
     grid-gap: 3rem;
 }
-#sec_first_pcard{
-    background-color: antiquewhite;
-    border-radius: 30px;
-    padding-top: 5%;
-}
+
 #c_p_n_p{
     display: flex;
 }
@@ -178,4 +183,33 @@ color: black;
 #c_p_desp{
     margin-left:3rem;
     margin-right: 3rem;
+}
+
+.btn{
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+#search{
+    margin-bottom: 10px;
+}
+#btn_delete,#btn_update{
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1410px)
+{
+    #test{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 1006px)
+{
+    #test{
+        grid-template-columns: auto;
+    }
+}
+#all_btn{
+    margin-top: 10px;
 }
