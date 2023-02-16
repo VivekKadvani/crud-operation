@@ -1,7 +1,7 @@
 const create = document.getElementById("btn_create")
 const update = document.getElementById("btn_Update_form")
 const p_name = document.getElementById("p_name")
-const prise = document.getElementById("p_prise")
+const price = document.getElementById("p_price")
 const p_image = document.getElementById("p_image")
 const description = document.getElementById("p_desc")
 
@@ -16,8 +16,8 @@ create.addEventListener("click", () => {
     regex_name = /[0-9]/g
     const f1 = regex_name.test(p_name.value)
 
-    regex_prise = /[a-zA-Z]|\W|_/g
-    const f2 = regex_prise.test(prise.value)
+    regex_price = /[a-zA-Z]|\W|_/g
+    const f2 = regex_price.test(price.value)
 
     regex_url = /^(http|https):\/\/[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}(([0-9]{1,5})?\/.*)?$/g
     const f3 = regex_url.test(p_image.value)
@@ -35,8 +35,8 @@ create.addEventListener("click", () => {
     }
 
     //check foe empty entry
-    else if (prise.value == "") {
-        alert("enter prise")
+    else if (price.value == "") {
+        alert("enter price")
         return 1;
     }
     //check for only numbers
@@ -71,7 +71,7 @@ function create_product() {
     const product = {
         p_id: t_id,
         p_name: p_name.value,
-        prise: prise.value,
+        price: price.value,
         desc: description.value,
         image: p_image.value
     }
@@ -102,7 +102,7 @@ for (let i = 0; i < l_data.length; i++) {
     <div id="c_p_image"><img id="c_p_image_data" src="`+ l_data[i].image + `"></div>
     <div id="c_p_n_p">
         <div id="c_n">`+ l_data[i].p_name + `</div>
-        <div id="c_p">`+ l_data[i].prise + `</div>
+        <div id="c_p">`+ l_data[i].price + `</div>
     </div>
     <div id="c_p_desp">`+ l_data[i].desc + `
     </div>
@@ -124,7 +124,7 @@ update.addEventListener("click", () => {
             const product = {
                 p_id: id_val,
                 p_name: p_name.value,
-                prise: prise.value,
+                price: price.value,
                 desc: description.value,
                 image: p_image.value
             }
@@ -164,7 +164,7 @@ window.addEventListener('popstate', function (event) {
         for (let i = 0; i < l_data.length; i++) {
             if (l_data[i].p_id == id_val) {
                 p_name.value = l_data[i].p_name
-                prise.value = l_data[i].prise
+                price.value = l_data[i].price
                 p_image.value = l_data[i].image
                 description.value = l_data[i].desc
                 update.disabled = false;
